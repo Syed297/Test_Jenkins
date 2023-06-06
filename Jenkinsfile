@@ -11,13 +11,23 @@ pipeline {
 
         stage('Train Model') {
             steps {
-                sh 'python3 model_training.py'
+                sh '''
+                pyenv activate mlops
+                pip install sklearn
+                pip install pickle
+                python3 model_training.py
+                '''
             }
         }
 
         stage('Test Model') {
             steps {
-                sh 'python3 model_testing.py'
+                sh '''
+                pyenv activate mlops
+                pip install sklearn
+                pip install pickle
+                python3 model_testing.py
+                '''
             }
         }
 
