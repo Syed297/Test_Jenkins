@@ -41,6 +41,11 @@ pipeline {
         stage('Deploy Model') {
             steps {
                 sh 'python3 model_deployment.py'
+                // Send email notification on success
+                emailext body: 'Model deployment successful.',
+                          subject: 'Model Deployment',
+                          to: 'recipient@example.com'
+
             }
         }
     }
