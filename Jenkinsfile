@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('Fetch from Git') {
             steps {
-                git branch: 'main'
-                git 'https://github.com/Syed297/Test_Jenkins'
+                git branch: 'main',
+                url: 'https://github.com/Syed297/Test_Jenkins'
             }
         }
 
