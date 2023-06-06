@@ -21,10 +21,11 @@ pipeline {
 
         stage('Train Model') {
             steps {
-                sh '''
-                source mlops_demo/bin/activate
-                python3 model_training.py
-                '''
+            sh '''
+            source ./mlops_demo/bin/activate
+            pip install scikit-learn
+            python3 model_training.py
+            '''
             }
         }
 
@@ -32,6 +33,7 @@ pipeline {
             steps {
                 sh '''
                 source mlops_demo/bin/activate
+                pip install scikit-learn
                 python3 model_testing.py
                 '''
             }
