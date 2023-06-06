@@ -44,7 +44,7 @@ pipeline {
                 // Send email notification on success
                 emailext body: 'Model deployment successful.',
                           subject: 'Model Deployment',
-                          to: 'recipient@example.com'
+                          to: 'syed.h@zifornd.com'
 
             }
         }
