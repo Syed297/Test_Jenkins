@@ -15,7 +15,6 @@ pipeline {
                 python3 -m venv mlops_demo
                 source mlops_demo/bin/activate
                 pip install sklearn
-                pip install pickle
                 '''
             }
         }
