@@ -8,13 +8,22 @@ pipeline {
                 url: 'https://github.com/Syed297/Test_Jenkins'
             }
         }
+        
+        stage('Prepare Environment') {
+            steps {
+                sh '''
+                python3 -m venv mlops_demo
+                source mlops_demo/bin/activate
+                pip install sklearn
+                pip install pickle
+                '''
+            }
+        }
 
         stage('Train Model') {
             steps {
                 sh '''
-                pyenv activate mlops
-                pip install sklearn
-                pip install pickle
+                source mlops_demo/bin/activate
                 python3 model_training.py
                 '''
             }
@@ -23,9 +32,7 @@ pipeline {
         stage('Test Model') {
             steps {
                 sh '''
-                pyenv activate mlops
-                pip install sklearn
-                pip install pickle
+                source mlops_demo/bin/activate
                 python3 model_testing.py
                 '''
             }
